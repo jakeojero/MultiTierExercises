@@ -58,6 +58,10 @@
       <Project>{1b952208-30ac-4a98-bef2-739a1029cd76}</Project>
       <Name>ExercisesDAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExercisesViewModels\ExercisesViewModels.csproj">
+      <Project>{bd22d56b-4fe9-4e96-96d5-d4c22a806787}</Project>
+      <Name>ExercisesViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
