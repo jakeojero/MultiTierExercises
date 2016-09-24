@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Example</title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="scripts/jquery-3.1.0.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Sample Menu</a>
+            <div class="col-xs-2"></div>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav" id="menu">
+                <li><a href="/emplookup.html">Lookup</a></li>
+                <li><a href="/modalexample.html">Modals</a></li>
+                <li><a class="btn" href="/Lab6.html#theModal" data-toggle="modal" data-target="#theModal">Lab 6</a></li>
+            </ul>
+
+            <ul class="nav pull-right" style="padding-right:20px;padding-top:10px;color:white;font-weight:bolder">
+                <li>Status goes here</li>
+            </ul>
+        </div>
+
+    </nav>
+
+
+    <div class="modal fade" data-backdrop="static" id="theModal">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h1>Lab 6</h1>
+                </div>
+
+                <div class="modal-body">
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading text-center">
+                            Employee Information
+                        </div>
+
+                        <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-xs-3" style="font-weight:bold">Title:</div>
+                                <div class="col-xs-2" id="title"></div>
+                                <div class="col-xs-2 text-right" style="font-weight:bold">First:</div>
+                                <div class="col-xs-5" id="firstname"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3" style="font-weight:bold">Phone#:</div>
+                                <div class="col-xs-8" id="phone"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-3" style="font-weight:bold">Email:</div>
+                                <div class="col-xs-8" id="email"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-3" style="font-weight:bold">Dept:</div>
+                                <div class="col-xs-8" id="departmentname"></div>
+                            </div>
+                            &nbsp;
+                            <div class="row">
+                                <div class="col-xs-3" style="font-weight:bold">Surname:</div>
+                                <div class="col-xs-8">
+                                    <input type="text" placeholder="Enter Last Name" id="TextBoxLastname" class="form-control" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <input type="button" value="Find Employee" id="empbutton" />
+                    <div id="lblstatus" class="text-left" style="padding-top:5%;"></div>
+                </div>
+
+           
+            </div>
+        </div>
+
+    </div>
+
+    <script src="scripts/employee.js"></script>
+</body>
+</html>
