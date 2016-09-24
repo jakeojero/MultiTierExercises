@@ -32,5 +32,22 @@ namespace Exercises_Tests
             vm.GetByLastname();
             Assert.IsTrue(vm.Firstname.Length > 0);
         }
+
+        [TestMethod]
+        public void DepartmentDAOReturnByIdShouldReturnDepartment()
+        {
+            DepartmentDAO dao = new DepartmentDAO();
+            Department someDepartment = dao.GetById("57e4857e669f1c20c00087cc");
+            Assert.IsInstanceOfType(someDepartment, typeof(Department));
+        }
+
+        [TestMethod]
+        public void DepartmentViewModelReturnByIdShouldLoadDepartmentName()
+        {
+            DepartmentViewModel vm = new DepartmentViewModel();
+            vm.Id = "57e4857e669f1c20c00087cc";
+            vm.GetById();
+            Assert.IsTrue(vm.Name.Length > 0);
+        }
     }
 }

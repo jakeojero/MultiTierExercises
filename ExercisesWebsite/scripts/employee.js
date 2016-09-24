@@ -5,12 +5,27 @@
         $("#lblstatus").text("please wait...");
 
         ajaxCall("Get", "api/employees/" + lastname, "").done(function (data) {
+       
             if (data.Lastname !== "not found") {
+
                 $("#email").text(data.Email);
                 $("#title").text(data.Title);
                 $("#firstname").text(data.Firstname);
                 $("#phone").text(data.Phoneno);
                 $("#lblstatus").text("employee found");
+
+                ajaxCall("Get", "api/departments/" + data.DepartmentID, "").done(function (data) {
+                    if (data.Name !== "not found") {
+                        $("#departmentname").text(data.Name);
+                    }
+                    else {
+                        $("departmentname").text("");
+                    }
+
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    errorRoutine(jqXHR);
+                });
+
             }
             else {
                 $("#firstname").text("not found");
@@ -19,9 +34,11 @@
                 $("#phone").text("");
                 $("#lblstatus").text("no such employee");
             }
+
         }).fail(function (jqXHR, textStatus, errorThrown) {
             errorRoutine(jqXHR);
         });//ajax call
+
 
     });//button click
 

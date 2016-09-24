@@ -26,6 +26,14 @@ namespace ExercisesDAL
                 return this.Db.GetCollection<Employee>("employees");
             }
         }
+
+        public IMongoCollection<Department> Departments
+        {
+            get
+            {
+                return this.Db.GetCollection<Department>("departments");
+            }
+        }
     }
 
 }
