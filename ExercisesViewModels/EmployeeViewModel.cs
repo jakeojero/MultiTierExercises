@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MongoDB.Bson;
 using ExercisesDAL;
 
 namespace ExercisesViewModels
@@ -43,8 +38,8 @@ namespace ExercisesViewModels
                 Lastname = emp.Lastname;
                 Phoneno = emp.Phoneno;
                 Email = emp.Email;
-                Id = emp.Id.ToString();
-                DepartmentID = emp.DepartmentId.ToString();
+                Id = emp.GetIdAsString();
+                DepartmentID = emp.GetDepartmentIdAsString();
                 Version = emp.Version;
             }
             catch (Exception ex)
@@ -52,6 +47,34 @@ namespace ExercisesViewModels
                 Lastname = "not found";
                 Console.WriteLine("error in EmployeeViewModel.GetByLastname - " + ex.Message);
             }
+        }
+
+        public int Update()
+        {
+            UpdateStatus opStatus;
+
+            try
+            {
+                Employee emp = new Employee();
+                emp.SetIdFromString(Id);
+                emp.SetDepartmentIdFromString(DepartmentID);
+                emp.Title = Title;
+                emp.Firstname = Firstname;
+                emp.Lastname = Lastname;
+                emp.Phoneno = Phoneno;
+                emp.Email = Email;
+                emp.Version = Version;
+                opStatus = _dao.Update(emp);
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                opStatus = UpdateStatus.Failed;
+            }
+
+            return Convert.ToInt16(opStatus); // Web Layer we dont know the enum
+
         }
 
 

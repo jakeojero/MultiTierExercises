@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ExercisesDAL;
 
 namespace ExercisesViewModels
@@ -25,7 +21,7 @@ namespace ExercisesViewModels
             try
             {
                 Department dep = _dao.GetById(Id);
-                Id = dep.Id.ToString();
+                Id = dep.GetIdAsString();
                 Name = dep.DepartmentName;
             }
             catch (Exception ex)

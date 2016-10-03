@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace ExercisesDAL
@@ -45,6 +46,61 @@ namespace ExercisesDAL
             return emp;
         }
 
+        public UpdateStatus Update(Employee emp)
+        {
+            UpdateStatus retVal = UpdateStatus.Failed;
 
+            try
+            {
+                if (Exists(emp.Id))
+                {
+                    DbContext ctx = new DbContext();
+                    var builder = Builders<Employee>.Filter;
+                    var filter = builder.Eq("Id", emp.Id) & builder.Eq("Version", emp.Version);
+                    var update = Builders<Employee>.Update
+                        .Set("DepartmentId", emp.DepartmentId)
+                        .Set("Email", emp.Email)
+                        .Set("Firstname", emp.Firstname)
+                        .Set("Lastname", emp.Lastname)
+                        .Set("Phoneno", emp.Phoneno)
+                        .Set("Title", emp.Title)
+                        .Inc("Version", 1);
+                        
+                    var result = ctx.Employees.UpdateOne(filter, update);
+
+                    if(result.MatchedCount == 0)
+                    {
+                        retVal = UpdateStatus.Stale;
+                    }
+                    else if(result.ModifiedCount == 1)
+                    {
+                        retVal = UpdateStatus.Ok;
+                    }
+                    else
+                    {
+                        retVal = UpdateStatus.Failed;
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception thrown in EmployeeDAO.Update " + ex.Message);
+                retVal = UpdateStatus.Failed;
+            }
+
+            return retVal;
+
+        }
+
+        private bool Exists(ObjectId id)
+        {
+            DbContext ctx = new DbContext();
+            var collection = ctx.Employees;
+            var filter = Builders<Employee>.Filter.Eq("Id", id);
+            var emps = ctx.Employees.Find(filter);
+            return (emps.Count() > 0);
+        }
     }
 }

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MongoDB.Driver;
-using MongoDB.Bson;
 
 namespace ExercisesDAL
 {
-    public class Department : HelpdeskEntity
+    public enum UpdateStatus
     {
-        public string DepartmentName { get; set; }
-    }
+        Ok = 1,
+        Failed = -1,
+        Stale = -2
+    };
 }

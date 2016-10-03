@@ -12,7 +12,11 @@
                 $("#title").text(data.Title);
                 $("#firstname").text(data.Firstname);
                 $("#phone").text(data.Phoneno);
-                $("#lblstatus").text("employee found");
+                
+                $("#lblstatus").addClass("alert alert-success");
+                $("#lblstatus").text("Employee found!");
+
+                $("#lblstatus").removeClass("alert-danger");
 
                 ajaxCall("Get", "api/departments/" + data.DepartmentID, "").done(function (data) {
                     if (data.Name !== "not found") {
@@ -32,7 +36,9 @@
                 $("#email").text("");
                 $("#title").text("");
                 $("#phone").text("");
-                $("#lblstatus").text("no such employee");
+                $("#departmentname").text("");
+                $("#lblstatus").addClass("alert alert-danger");
+                $("#lblstatus").text("No Such Employee");
             }
 
         }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -43,6 +49,7 @@
     });//button click
 
 });//jquery default function
+
 
 function ajaxCall(type, url, data) {
     return $.ajax({//return the promise that `$.ajax` returns
