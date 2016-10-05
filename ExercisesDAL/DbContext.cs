@@ -42,6 +42,11 @@ namespace ExercisesDAL
                 return this.Db.GetCollection<Problem>("problems");
             }
         }
+
+        public IMongoCollection<HelpdeskEntity> GetCollection<HelpdeskEntity>()
+        {
+            return Db.GetCollection<HelpdeskEntity>(typeof(HelpdeskEntity).Name.ToLower() + "s");
+        }
     }
 
 }

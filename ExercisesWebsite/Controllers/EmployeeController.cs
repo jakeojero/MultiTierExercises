@@ -22,6 +22,30 @@ namespace ExercisesWebsite
             }
         }
 
+        [Route("api/employees")]
+        public IHttpActionResult Put(EmployeeViewModel emp)
+        {
+            try
+            {
+                int retVal = emp.Update();
+                switch(retVal)
+                {
+                    case 1:
+                        return Ok("Employee " + emp.Lastname + " updated!");
+                    case -1:
+                        return Ok("Employee " + emp.Lastname + " not updated!");
+                    case -2:
+                        return Ok("Data is Stale for " + emp.Lastname + ", Employee not updated");
+                    default:
+                        return Ok("Employee " + emp.Lastname + " not updated!");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Update Failed - " + ex.Message);
+            }
+        }
+
 
     }
 }

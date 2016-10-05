@@ -94,6 +94,35 @@ namespace ExercisesDAL
 
         }
 
+        public UpdateStatus UpdateWithRepo(Employee emp)
+        {
+            UpdateStatus status = UpdateStatus.Failed;
+            HelpdeskRepository repo = new HelpdeskRepository(new DbContext());
+
+            try
+            {
+                var builder = Builders<Employee>.Filter;
+                var filter = builder.Eq("Id", emp.Id) & builder.Eq("Version", emp.Version);
+                var update = Builders<Employee>.Update
+                    .Set("DepartmentId", emp.DepartmentId)
+                    .Set("Email", emp.Email)
+                    .Set("Firstname", emp.Firstname)
+                    .Set("Lastname", emp.Lastname)
+                    .Set("Phoneno", emp.Phoneno)
+                    .Set("Title", emp.Title)
+                    .Inc("Version", 1);
+
+                status = repo.Update(emp.Id.ToString(), filter, update);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Exception thrown in EmployeeDAO.UpdateWithRepo " + ex.Message);
+            }
+
+            return status;
+
+        }
+
         private bool Exists(ObjectId id)
         {
             DbContext ctx = new DbContext();

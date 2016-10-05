@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Update</title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+</head>
+<body>
+
+    <div class="container">
+
+        <div style="padding-top:15%;">
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading text-center">
+                    Update Employee
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="col-xs-6">
+                        <input type="text" placeholder="Enter Last Name" id="TextBoxFindLastname" class="form-control" />
+                    </div>
+
+                    <div class="col-xs-3 text-right" style="padding-top:2%;">
+                        <input type="button" class="btn btn-primary" value="Find" id="empgetbutton" />
+                    </div>
+
+                </div>
+
+                <div class="panel-footer"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" data-backdrop="static" id="theModal">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>Update Employee</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading text-center">
+                            Employee Information
+                        </div>
+
+                        <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-xs-4" style="font-weight:bold">Title:</div>
+                                <div class="col-xs-8"><input type="text" placeholder="Enter Title" id="TextBoxTitle" class="form-control" /></div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-xs-4" style="font-weight:bold">First:</div>
+                                <div class="col-xs-8"><input type="text" placeholder="Enter Firstname" id="TextBoxFirstname" class="form-control" /></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4" style="font-weight:bold">Surname:</div>
+                                <div class="col-xs-8"><input type="text" placeholder="Enter Lastname" id="TextBoxLastname" class="form-control" /></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4" style="font-weight:bold">Phone #:</div>
+                                <div class="col-xs-8"><input type="text" placeholder="Enter Phone Number" id="TextBoxPhone" class="form-control" /></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4" style="font-weight:bold">Email:</div>
+                                <div class="col-xs-8"><input type="text" placeholder="Enter Email" id="TextBoxEmail" class="form-control" /></div>
+                            </div>
+
+                        </div>
+
+                        <div class="panel-footer">&nbsp;</div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-primary" value="Update" id="empupdbutton" />
+                    <div id="lblstatus" class="text-left" style="margin-top:1%;"></div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="scripts/jquery-3.1.0.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/employee.js"></script>
+</body>
+</html>

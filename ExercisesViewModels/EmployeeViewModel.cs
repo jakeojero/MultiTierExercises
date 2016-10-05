@@ -64,7 +64,7 @@ namespace ExercisesViewModels
                 emp.Phoneno = Phoneno;
                 emp.Email = Email;
                 emp.Version = Version;
-                opStatus = _dao.Update(emp);
+                opStatus = _dao.UpdateWithRepo(emp);
 
             }
             catch(Exception ex)
